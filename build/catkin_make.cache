@@ -1,0 +1,2 @@
+gps_nmea_sender_2
+-DCATKIN_DEVEL_PREFIX=/home/moji/gps_workspace/devel -DCMAKE_INSTALL_PREFIX=/home/moji/gps_workspace/install -G Unix Makefiles

@@ -1,0 +1,12 @@
+[Unit]
+Description=GPS (Global Positioning System) Daemon
+Requires=network.target netcat-gps.service
+After=network.target netcat-gps.service
+
+[Service]
+ExecStart=/bin/bash -c 'nc -l -k -p 5000 | gpsd -N -n -G -D 5 -S 2947 /dev/stdin'
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

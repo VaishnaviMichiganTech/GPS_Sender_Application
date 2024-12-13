@@ -1,0 +1,14 @@
+[Unit]
+Description=Set system date and time from GPS
+#Wants=netcat-gps.service
+Wants=gpsd.service
+#After=netcat-gps.service
+After=gpsd.service
+
+[Service]
+ExecStart=/bin/gps_init_date.py
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

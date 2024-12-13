@@ -1,0 +1,28 @@
+# Change all the files
+
+# Stop, enable, start services
+systemctl stop chrony.service
+systemctl stop gpsdatetime.service
+systemctl stop gpsd.service
+systemctl stop netcat-gps.service
+
+systemctl daemon-reload
+
+systemctl enable netcat-gps.service
+systemctl start netcat-gps.service
+
+systemctl enable gpsd.service
+systemctl start gpsd.service
+
+python3 gps_nmea_sender.py
+
+systemctl enable gpsdatetime.service
+systemctl start gpsdatetime.service
+systemctl enable chrony.service
+systemctl start chrony.service
+
+# Start OBU
+/mnt/rw/example1609/rc.example1609 start obu
+
+# Verify output
+tcpdump -i cw-mon-txa -xx

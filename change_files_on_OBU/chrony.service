@@ -1,0 +1,15 @@
+[Unit]
+Description=Chrony Network Time Daemon
+Wants=gpsdatetime.service
+#Wants=gpsd.service
+After=gpsdatetime.service
+#After=gpsdatetime.service
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/chronyd
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
