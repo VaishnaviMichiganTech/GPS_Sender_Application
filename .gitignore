@@ -1,0 +1,7 @@
+build/
+devel/
+bags/
+*.bag
+*.bag.*
+.catkin_workspace
+
